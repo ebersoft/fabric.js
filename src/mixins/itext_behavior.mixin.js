@@ -128,7 +128,7 @@
         clearTimeout(this._cursorTimeout1);
       }
       this._cursorTimeout1 = setTimeout(function() {
-        _this._currentTickCompleteState = _this._animateCursor(_this, 0, this.cursorDuration / 2, '_tick');
+        _this._currentTickCompleteState = _this._animateCursor(_this, 0, _this.cursorDuration / 2, '_tick');
       }, 100);
     },
 

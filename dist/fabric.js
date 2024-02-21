@@ -1,7 +1,7 @@
 /* build: `node build.js modules=ALL exclude=gestures,accessors,erasing requirejs minifier=uglifyjs` */
 /*! Fabric.js Copyright 2008-2015, Printio (Juriy Zaytsev, Maxim Chernyak) */
 
-var fabric = fabric || { version: '5.3.0' };
+var fabric = fabric || { version: '5.2.1' };
 if (typeof exports !== 'undefined') {
   exports.fabric = fabric;
 }
@@ -1858,7 +1858,6 @@ fabric.CommonMethods = {
               prevStyle.fontFamily !== thisStyle.fontFamily ||
               prevStyle.fontWeight !== thisStyle.fontWeight ||
               prevStyle.fontStyle !== thisStyle.fontStyle ||
-              prevStyle.textBackgroundColor !== thisStyle.textBackgroundColor ||
               prevStyle.deltaY !== thisStyle.deltaY) ||
               (forTextSpans &&
                 (prevStyle.overline !== thisStyle.overline ||
@@ -1892,7 +1891,7 @@ fabric.CommonMethods = {
           charIndex++;
           var thisStyle = styles[i][c];
           //check if style exists for this character
-          if (thisStyle && Object.keys(thisStyle).length > 0) {
+          if (thisStyle) {
             var styleChanged = fabric.util.hasStyleChanged(prevStyle, thisStyle, true);
             if (styleChanged) {
               stylesArray.push({
@@ -2936,7 +2935,7 @@ fabric.CommonMethods = {
 
   /**
    * Creates an empty object and copies all enumerable properties of another object to it
-   * This method is mostly for internal use, and not intended for duplicating shapes in canvas.
+   * This method is mostly for internal use, and not intended for duplicating shapes in canvas. 
    * @memberOf fabric.util.object
    * @param {Object} object Object to clone
    * @param {Boolean} [deep] Whether to clone nested objects
@@ -9914,7 +9913,7 @@ fabric.ElementsParser = function(elements, callback, options, reviver, parsingOp
 
     /**
      * Returns coordinates of a center of canvas.
-     * @return {fabric.Point}
+     * @return {fabric.Point} 
      */
     getCenterPoint: function () {
       return new fabric.Point(this.width / 2, this.height / 2);
@@ -21988,14 +21987,13 @@ fabric.util.object.extend(fabric.StaticCanvas.prototype, /** @lends fabric.Stati
      * @param {Number} width The width to initialize the texture at.
      * @param {Number} height The height to initialize the texture.
      * @param {HTMLImageElement|HTMLCanvasElement} textureImageSource A source for the texture data.
-     * @param {Number} filterType gl.NEAREST or gl.LINEAR usually, webgl numeri constants
      * @returns {WebGLTexture}
      */
-    createTexture: function(gl, width, height, textureImageSource, filterType) {
+    createTexture: function(gl, width, height, textureImageSource) {
       var texture = gl.createTexture();
       gl.bindTexture(gl.TEXTURE_2D, texture);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, filterType || gl.NEAREST);
-      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, filterType || gl.NEAREST);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.NEAREST);
+      gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.NEAREST);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
       gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
       if (textureImageSource) {
@@ -25158,7 +25156,7 @@ fabric.Image.filters.BaseFilter.fromObject = function(object, callback) {
      * Saturation value, from -1 to 1.
      * Increases/decreases the color saturation.
      * A value of 0 has no effect.
-     *
+     * 
      * @param {Number} saturation
      * @default
      */
@@ -25280,7 +25278,7 @@ fabric.Image.filters.BaseFilter.fromObject = function(object, callback) {
      * Vibrance value, from -1 to 1.
      * Increases/decreases the saturation of more muted colors with less effect on saturated colors.
      * A value of 0 has no effect.
-     *
+     * 
      * @param {Number} vibrance
      * @default
      */
@@ -29686,7 +29684,7 @@ fabric.util.object.extend(fabric.IText.prototype, /** @lends fabric.IText.protot
     // https://bugs.chromium.org/p/chromium/issues/detail?id=870966
     this.hiddenTextarea.style.cssText = 'position: absolute; top: ' + style.top +
     '; left: ' + style.left + '; z-index: -999; opacity: 0; width: 1px; height: 1px; font-size: 1px;' +
-    ' padding-top: ' + style.fontSize + ';';
+    ' paddingｰtop: ' + style.fontSize + ';';
 
     if (this.hiddenTextareaContainer) {
       this.hiddenTextareaContainer.appendChild(this.hiddenTextarea);
