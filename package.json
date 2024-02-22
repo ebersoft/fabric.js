@@ -49,7 +49,7 @@
     "build:fast": "node build.js modules=ALL requirejs fast exclude=gestures,accessors,erasing",
     "build:watch": "onchange 'src/**/**' 'HEADER.js' 'lib/**/**' -- npm run build_export",
     "link:watch": "onchange 'src/**/**' 'HEADER.js' 'lib/**/**' -- npm link",
-    "build_with_erasing": "node build.js modules=ALL requirejs exclude=gestures,accessors",
+    "build_with_erasing": "node build.js modules=ALL exclude=gestures,accessors",
     "build_with_gestures": "node build.js modules=ALL exclude=accessors",
     "build_export": "npm run build:fast && npm run export_dist_to_site",
     "test:single": "qunit test/node_test_setup.js test/lib",
